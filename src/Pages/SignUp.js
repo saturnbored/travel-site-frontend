@@ -43,7 +43,7 @@ export default function SignUp({isLoggedIn}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch("http://localhost:8080/signup", {
+      let res = await fetch("https://travel-site-saturnbored.onrender.com/signup", {
         method: "POST",
         headers: {
           Accept: "application/json",
