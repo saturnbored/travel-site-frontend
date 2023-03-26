@@ -34,7 +34,7 @@ const TestimonialCard = (props) => {
         // e.preventDefault();
         try {
           console.log("herherhe", newRole);
-          let res = await fetch("http://localhost:8080/admin/team/update", {
+          let res = await fetch("https://travel-site-saturnbored.onrender.com/admin/team/update", {
             method: "PATCH",
             headers: {
               Accept: "application/json",
@@ -62,7 +62,7 @@ const TestimonialCard = (props) => {
 
   const handleDelete = async () => {
     try {
-      let res = await fetch("http://localhost:8080/admin/team/remove", {
+      let res = await fetch("https://travel-site-saturnbored.onrender.com/admin/team/remove", {
         method: "PATCH",
         headers: {
           Accept: "application/json",
@@ -184,7 +184,7 @@ const TeamMembers = () => {
   useEffect(() => {
     const fetchTeams = async function () {
       try {
-        let res = await fetch("http://localhost:8080/admin/team", {
+        let res = await fetch("https://travel-site-saturnbored.onrender.com/admin/team", {
           method: "GET",
           headers: {
             Accept: "application/json",
