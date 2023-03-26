@@ -39,7 +39,7 @@ function App() {
         <Route path="/about" element={<AboutPage isLoggedIn = {isLoggedIn} fetchAgain = {fetchAgain} setFetchAgain = {setFetchAgain} />} exact />
         <Route path="/package" element={<Package isLoggedIn = {isLoggedIn} fetchAgain={fetchAgain} />}  exact />
         <Route path="/signin" element={<SignIn isLoggedIn = {isLoggedIn} setFetchAgain = {setFetchAgain} fetchAgain = {fetchAgain} />} exact />
-        <Route path="/team" element={<Admin isLoggedIn = {isLoggedIn} setFetchAgain = {setFetchAgain} fetchAgain={fetchAgain} />} exact />
+        <Route path="/admin" element={<Admin isLoggedIn = {isLoggedIn} setFetchAgain = {setFetchAgain} fetchAgain={fetchAgain} />} exact />
         {/* <Route path="/banner" element={<Banner />} exact /> */}
       </Routes>
     </div>

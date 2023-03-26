@@ -137,7 +137,7 @@ export default function Navbar({isLoggedIn, fetchAgain, setFetchAgain}) {
               <>
               {(!isLoggedIn.isAdmin)?
               (<></>):<Button rounded={"full"}>
-              <a href="/signin">Admin</a>
+              <a href="/admin">Admin</a>
             </Button>}
               <Button
                 px={4}
