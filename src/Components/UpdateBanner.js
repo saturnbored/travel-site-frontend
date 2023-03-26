@@ -37,7 +37,7 @@ const TestimonialCard = (props) => {
         // e.preventDefault();
         try {
           console.log('herherhe', imgLink);
-          let res = await fetch("http://localhost:8080/admin/banners", {
+          let res = await fetch("https://travel-site-saturnbored.onrender.com/admin/banners", {
             method: "PATCH",
             headers: {
               Accept: "application/json",
@@ -118,7 +118,7 @@ const UpdateBanner = () => {
   useEffect(() => {
     const fetchBanners = async function () {
       try {
-        let res = await fetch("http://localhost:8080/admin/banners", {
+        let res = await fetch("https://travel-site-saturnbored.onrender.com/admin/banners", {
           method: "GET",
           headers: {
             Accept: "application/json",
