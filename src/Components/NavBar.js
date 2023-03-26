@@ -47,9 +47,8 @@ const NavLink = ({ children, _url }) => (
   </Link>
 );
 
-export default function Navbar({isLoggedIn, fetchAgain, setFetchAgain}) {
-
-  console.log('herhehrej', isLoggedIn);
+export default function Navbar({ isLoggedIn, fetchAgain, setFetchAgain }) {
+  console.log("herhehrej", isLoggedIn);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -66,8 +65,8 @@ export default function Navbar({isLoggedIn, fetchAgain, setFetchAgain}) {
   const handleLogout = () => {
     localStorage.removeItem("session");
     setFetchAgain(!fetchAgain);
-    navigate('/');
-  }
+    navigate("/");
+  };
 
   return (
     <>
@@ -109,7 +108,7 @@ export default function Navbar({isLoggedIn, fetchAgain, setFetchAgain}) {
             </HStack>
           </HStack>
           <Flex alignItems={"center"}>
-            {!(isLoggedIn.status) ? (
+            {!isLoggedIn.status ? (
               <>
                 <Button rounded={"full"}>
                   <a href="/signin">Login</a>
@@ -135,34 +134,34 @@ export default function Navbar({isLoggedIn, fetchAgain, setFetchAgain}) {
               </>
             ) : (
               <>
-              {(!isLoggedIn.isAdmin)?
-              (<></>):<Button rounded={"full"}>
-              <a href="/admin">Admin</a>
-            </Button>}
-              <Button
-                px={4}
-                fontSize={"sm"}
-                rounded={"full"}
-                bg={"red.400"}
-                color={"white"}
-                boxShadow={
-                  "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
-                }
-                _hover={{
-                  bg: "red.500",
-                }}
-                _focus={{
-                  bg: "red.500",
-                }}
-
-                onClick = {handleLogout}
-
-              >
-                <a href="/">Log Out</a>
-              </Button>
+                {!isLoggedIn.isAdmin ? (
+                  <></>
+                ) : (
+                  <Button rounded={"full"}
+                  onClick = {() => navigate('/admin')}
+                  >Admin</Button>
+                )}
+                <Button
+                  px={4}
+                  fontSize={"sm"}
+                  rounded={"full"}
+                  bg={"red.400"}
+                  color={"white"}
+                  boxShadow={
+                    "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
+                  }
+                  _hover={{
+                    bg: "red.500",
+                  }}
+                  _focus={{
+                    bg: "red.500",
+                  }}
+                  onClick={handleLogout}
+                >
+                  <a href="/">Log Out</a>
+                </Button>
               </>
-            )
-          }
+            )}
           </Flex>
         </Flex>
 
