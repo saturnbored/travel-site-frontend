@@ -1,27 +1,7 @@
-import {
-  Box,
-  Divider,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  Text,
-  Heading,
-  StackDivider,
-  Image,
-  Button,
-  UnorderedList,
-  ListItem,
-  Tab,
-  Stack,
-  Select,
-} from "@chakra-ui/react";
-import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Box, Text, Heading, Button, Stack, Select } from "@chakra-ui/react";
+import { Card, CardBody } from "@chakra-ui/react";
 
-import overview from "../Images/overview.png";
-import { useRef, useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
+import { useEffect, useState } from "react";
 
 const TestimonialCard = (props) => {
   const [newRole, setNewRole] = useState("");
@@ -31,26 +11,24 @@ const TestimonialCard = (props) => {
   useEffect(() => {
     if (clicked) {
       const handleSubmit = async () => {
-        // e.preventDefault();
         try {
-          console.log("herherhe", newRole);
-          let res = await fetch("https://travel-site-saturnbored.onrender.com/admin/team/update", {
-            method: "PATCH",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${props.token}`,
-            },
-            body: JSON.stringify({
-              email: props.email,
-              newRole: newRole,
-            }),
-          });
+          let res = await fetch(
+            "https://travel-site-saturnbored.onrender.com/admin/team/update",
+            {
+              method: "PATCH",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${props.token}`,
+              },
+              body: JSON.stringify({
+                email: props.email,
+                newRole: newRole,
+              }),
+            }
+          );
           res = await res.json();
-          console.log(res);
           props.setFetchTeam(!props.fetchTeam);
-          // localStorage.setItem("token", res.token);
-          // navigate("/");
         } catch (err) {
           console.log(err.message);
         }
@@ -62,19 +40,21 @@ const TestimonialCard = (props) => {
 
   const handleDelete = async () => {
     try {
-      let res = await fetch("https://travel-site-saturnbored.onrender.com/admin/team/remove", {
-        method: "PATCH",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${props.token}`,
-        },
-        body: JSON.stringify({
-          email: props.email,
-        }),
-      });
+      let res = await fetch(
+        "https://travel-site-saturnbored.onrender.com/admin/team/remove",
+        {
+          method: "PATCH",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${props.token}`,
+          },
+          body: JSON.stringify({
+            email: props.email,
+          }),
+        }
+      );
       res = await res.json();
-      console.log(res);
       props.setFetchTeam(!props.fetchTeam);
     } catch (err) {
       console.log(err.message);
@@ -131,8 +111,11 @@ const TestimonialCard = (props) => {
             </Button>
           </Stack>
           <Stack direction="row" spacing={4} align="center">
-            <Button colorScheme="red" variant="solid" width="300px"
-            onClick={handleDelete}
+            <Button
+              colorScheme="red"
+              variant="solid"
+              width="300px"
+              onClick={handleDelete}
             >
               Delete
             </Button>
@@ -144,39 +127,6 @@ const TestimonialCard = (props) => {
 };
 
 const TeamMembers = () => {
-  const member = [
-    {
-      key: 1,
-      name: "Kartik Singh",
-      email: "kartik@gmail.com",
-      role: "Backend-Developer",
-    },
-    {
-      key: 2,
-      name: "Shivam  Ruhil",
-      email: "Ruhil@gmail.com",
-      role: "Backend-Developer",
-    },
-    {
-      key: 3,
-      name: "Lakshya Singh",
-      email: "lak@gmail.com",
-      role: "Backend-Developer",
-    },
-    {
-      key: 4,
-      name: "Raj Singh",
-      email: "raj@gmail.com",
-      role: "Backend-Developer",
-    },
-    {
-      key: 5,
-      name: "Rohit Singh",
-      email: "rohit@gmail.com",
-      role: "Backend-Developer",
-    },
-  ];
-
   const [team, setTeam] = useState([]);
   const [fetchTeam, setFetchTeam] = useState(false);
   const token = JSON.parse(localStorage.getItem("session")).token;
@@ -184,19 +134,19 @@ const TeamMembers = () => {
   useEffect(() => {
     const fetchTeams = async function () {
       try {
-        let res = await fetch("https://travel-site-saturnbored.onrender.com/admin/team", {
-          method: "GET",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        let res = await fetch(
+          "https://travel-site-saturnbored.onrender.com/admin/team",
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         res = await res.json();
-        console.log(res);
         setTeam(res);
-        // localStorage.setItem("token", res.token);
-        // navigate("/");
       } catch (err) {
         console.log(err.message);
       }
@@ -206,7 +156,6 @@ const TeamMembers = () => {
 
   return (
     <>
-      {/* <Box> */}
       <Box
         mb="20px"
         display="flex"

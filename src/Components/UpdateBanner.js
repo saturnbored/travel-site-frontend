@@ -1,30 +1,7 @@
-import {
-  Box,
-  Divider,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  Text,
-  ButtonGroup,
-  Heading,
-  StackDivider,
-  Image,
-  Input,
-  Button,
-  UnorderedList,
-  ListItem,
-  Tab,
-  Stack,
-  Select,
-} from "@chakra-ui/react";
-import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Box, Heading, Image, Input, Button, Stack } from "@chakra-ui/react";
+import { Card, CardBody } from "@chakra-ui/react";
 
-import overview from "../Images/overview.png";
-import { useRef, useEffect, useState } from "react";
-import { useInView } from "react-intersection-observer";
-import AdminPanel from "./AdminPanel";
+import { useEffect, useState } from "react";
 
 const TestimonialCard = (props) => {
   const [imgLink, setImgLink] = useState("");
@@ -32,28 +9,26 @@ const TestimonialCard = (props) => {
   const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
-    if(clicked) {
+    if (clicked) {
       const handleSubmit = async () => {
-        // e.preventDefault();
         try {
-          console.log('herherhe', imgLink);
-          let res = await fetch("https://travel-site-saturnbored.onrender.com/admin/banners", {
-            method: "PATCH",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${props.token}`,
-            },
-            body: JSON.stringify({
-              page: props.name,
-              img_link: imgLink,
-            }),
-          });
+          let res = await fetch(
+            "https://travel-site-saturnbored.onrender.com/admin/banners",
+            {
+              method: "PATCH",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${props.token}`,
+              },
+              body: JSON.stringify({
+                page: props.name,
+                img_link: imgLink,
+              }),
+            }
+          );
           res = await res.json();
-          console.log(res);
-          props.setFetchBanners(!props.fetchBanners)
-          // localStorage.setItem("token", res.token);
-          // navigate("/");
+          props.setFetchBanners(!props.fetchBanners);
         } catch (err) {
           console.log(err.message);
         }
@@ -62,7 +37,6 @@ const TestimonialCard = (props) => {
       setClicked(false);
     }
   }, [imgLink, clicked]);
-
 
   return (
     <Card maxW="sm">
@@ -76,11 +50,15 @@ const TestimonialCard = (props) => {
           <Heading size="md">{props.name}</Heading>
           <Input
             placeholder="Enter Url"
-            onChange={(e) => {  
-              setImgLink(e.target.value)
+            onChange={(e) => {
+              setImgLink(e.target.value);
             }}
           />
-          <Button variant="solid" colorScheme="blue" onClick={() => setClicked(true)}>
+          <Button
+            variant="solid"
+            colorScheme="blue"
+            onClick={() => setClicked(true)}
+          >
             Update Banner
           </Button>
         </Stack>
@@ -118,19 +96,19 @@ const UpdateBanner = () => {
   useEffect(() => {
     const fetchBanners = async function () {
       try {
-        let res = await fetch("https://travel-site-saturnbored.onrender.com/admin/banners", {
-          method: "GET",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        let res = await fetch(
+          "https://travel-site-saturnbored.onrender.com/admin/banners",
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         res = await res.json();
-        console.log(res);
         setBanners(res);
-        // localStorage.setItem("token", res.token);
-        // navigate("/");
       } catch (err) {
         console.log(err.message);
       }
@@ -140,7 +118,6 @@ const UpdateBanner = () => {
 
   return (
     <>
-      {/* <Box> */}
       <Box
         mb="20px"
         display="flex"
@@ -155,8 +132,8 @@ const UpdateBanner = () => {
             name={el.page}
             url={el.img_link || defaultImgLink}
             token={token}
-            fetchBanners = {fetchBanners}
-            setFetchBanners = {setFetchBanners}
+            fetchBanners={fetchBanners}
+            setFetchBanners={setFetchBanners}
           />
         ))}
       </Box>

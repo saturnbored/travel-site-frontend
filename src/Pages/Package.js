@@ -8,10 +8,14 @@ import PackageInfo from "../Components/PackageInfo";
 import TravelForm from "../Components/TravelForm";
 import PackageBanner from "../Components/PackageBanner";
 
-const Package = ({isLoggedIn, setFetchAgain, fetchAgain}) => {
+const Package = ({ isLoggedIn, setFetchAgain, fetchAgain }) => {
   return (
     <div>
-      <Navbar isLoggedIn = {isLoggedIn} setFetchAgain = {setFetchAgain} fetchAgain={fetchAgain} />
+      <Navbar
+        isLoggedIn={isLoggedIn}
+        setFetchAgain={setFetchAgain}
+        fetchAgain={fetchAgain}
+      />
       <PackageBanner />
       <Box
         display="flex"
@@ -37,13 +41,10 @@ const Package = ({isLoggedIn, setFetchAgain, fetchAgain}) => {
           <Box
             display="flex"
             justifyContent={"center"}
-            // maxWidth={{ sm: "70%", base: "70%", lg: "auto"}}
             flexWrap="wrap"
             alignContent={"center"}
             alignItems="center"
             p="2px"
-            // border = "5px solid red"
-            // minWidth={{lg: "100%", md: "100%"}}
           >
             <Faq />
           </Box>

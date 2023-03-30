@@ -11,8 +11,8 @@ const Certificate = () => {
         justifyContent={"center"}
         flexWrap="wrap"
         alignContent={"center"}
-        gap = "10vh"
-        px = "1vw"
+        gap="10vh"
+        px="1vw"
       >
         <Box
           display="flex"
@@ -90,6 +90,5 @@ const Certificate = () => {
     </>
   );
 };
-
 
 export default Certificate;

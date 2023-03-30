@@ -1,22 +1,17 @@
 import {
   Box,
   Divider,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
   Text,
   Image,
   Button,
   UnorderedList,
   ListItem,
-  Tab,
   HStack,
 } from "@chakra-ui/react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import overview from "../Images/overview.png";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { useInView } from "react-intersection-observer";
 
 const Overview = ({ overviewRef, myOverviewRef }) => {
@@ -69,13 +64,7 @@ const Overview = ({ overviewRef, myOverviewRef }) => {
 
 const DayPlan = ({ day_id }) => {
   return (
-    <Box
-      display="flex"
-      // justifyContent={"center"}
-      // flexWrap="wrap"
-      // alignContent="flex-start"
-      gap="4vw"
-    >
+    <Box display="flex" gap="4vw">
       <Box>
         <Button colorScheme={"telegram"}> Day {day_id}</Button>
       </Box>
@@ -261,16 +250,12 @@ const PackageInfo = () => {
   const myAdditionalRef = useRef(null);
   const myOverviewRef = useRef(null);
   const myItinearyRef = useRef(null);
-
-  // const [overviewVisible, setOverviewVisible] = useState(true);
-  // const [itinearyVisible, setItinearyVisible] = useState(false);
   const { ref: overviewRef, inView: overviewReftIsVisible } = useInView();
   const { ref: itinearyRef, inView: itinearyRefIsVisible } = useInView();
   const { ref: additionalRef, inView: addtionalRefIsVisible } = useInView();
 
   return (
     <>
-      {/* <Box> */}
       <Box
         mb="20px"
         display="flex"
@@ -358,7 +343,6 @@ const PackageInfo = () => {
             </p>
           </Box>
         </HStack>
-        {/* </Box> */}
         <Overview
           id="overview"
           overviewRef={overviewRef}

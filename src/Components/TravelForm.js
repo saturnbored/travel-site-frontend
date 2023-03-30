@@ -62,7 +62,7 @@ const Counter = () => {
 const TravelForm = () => {
   return (
     <>
-      <Card maxWidth={"fit-content"} shadow = "2xl">
+      <Card maxWidth={"fit-content"} shadow="2xl">
         <CardBody maxWidth={"fit-content"}>
           <Box
             display="flex"

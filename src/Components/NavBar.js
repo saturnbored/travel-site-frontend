@@ -1,17 +1,10 @@
-import { ReactNode, useEffect, useState } from "react";
 import {
   Box,
   Flex,
-  Avatar,
   HStack,
   Link,
   IconButton,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
   useDisclosure,
   useColorModeValue,
   Stack,
@@ -26,7 +19,7 @@ const Links = [
   ["Packages", "/package"],
   ["About Lakshadweep", "#"],
   ["About Us", "/about"],
-  ["GoI", "/team"],
+  ["GoI", "#"],
   ["Support", "#"],
 ];
 
@@ -48,17 +41,7 @@ const NavLink = ({ children, _url }) => (
 );
 
 export default function Navbar({ isLoggedIn, fetchAgain, setFetchAgain }) {
-  console.log("herhehrej", isLoggedIn);
-
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // useEffect(() => {
-  //   if (token) {
-  //     setIsLoggedIn(true);
-  //   }
-  // }, []);
 
   const navigate = useNavigate();
 
@@ -137,9 +120,9 @@ export default function Navbar({ isLoggedIn, fetchAgain, setFetchAgain }) {
                 {!isLoggedIn.isAdmin ? (
                   <></>
                 ) : (
-                  <Button rounded={"full"}
-                  onClick = {() => navigate('/admin')}
-                  >Admin</Button>
+                  <Button rounded={"full"} onClick={() => navigate("/admin")}>
+                    Admin
+                  </Button>
                 )}
                 <Button
                   px={4}

@@ -1,7 +1,4 @@
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Box } from "@chakra-ui/react";
-import AddAdminForm from "./Forms/AddAdminForm";
-import AddPackageForm from "./Forms/AddPackageForm";
-import ChangeBannerForm from "./Forms/ChangeBannerForm";
 import TeamMembers from "./TeamMembers";
 import UpdateBanner from "./UpdateBanner";
 

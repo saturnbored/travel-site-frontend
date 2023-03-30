@@ -21,9 +21,8 @@ import Navbar from "../Components/NavBar";
 
 import { useNavigate } from "react-router-dom";
 
-export default function SignUp({isLoggedIn}) {
-
-  console.log('xxxx', isLoggedIn);
+export default function SignUp({ isLoggedIn }) {
+  console.log("xxxx", isLoggedIn);
 
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
@@ -34,32 +33,34 @@ export default function SignUp({isLoggedIn}) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(isLoggedIn?.status){
-      console.log('cum cum');
-      navigate('/home');
+    if (isLoggedIn?.status) {
+      navigate("/home");
     }
-  })
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch("https://travel-site-saturnbored.onrender.com/signup", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({user : {
-            email,
-            password,
-            name,
-            place,
-          }
-        })
-      });
+      let res = await fetch(
+        "https://travel-site-saturnbored.onrender.com/signup",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user: {
+              email,
+              password,
+              name,
+              place,
+            },
+          }),
+        }
+      );
       res = await res.json();
-      console.log(res);
-      navigate('/signin');
+      navigate("/signin");
     } catch (err) {
       console.log(err.message);
     }
@@ -94,24 +95,40 @@ export default function SignUp({isLoggedIn}) {
                 <Box>
                   <FormControl id="firstName" isRequired>
                     <FormLabel>Full Name</FormLabel>
-                    <Input type="text" onChange={(e) => setName(e.target.value)} value = {name} />
+                    <Input
+                      type="text"
+                      onChange={(e) => setName(e.target.value)}
+                      value={name}
+                    />
                   </FormControl>
                 </Box>
                 <Box>
                   <FormControl id="lastName" isRequired>
                     <FormLabel>Place</FormLabel>
-                    <Input type="text" onChange={(e) => setPlace(e.target.value)} value = {place}/>
+                    <Input
+                      type="text"
+                      onChange={(e) => setPlace(e.target.value)}
+                      value={place}
+                    />
                   </FormControl>
                 </Box>
               </HStack>
               <FormControl id="email" isRequired>
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" onChange={(e) => setEmail(e.target.value)} value = {email}/>
+                <Input
+                  type="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                />
               </FormControl>
               <FormControl id="password" isRequired>
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
-                  <Input type={showPassword ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} value = {password}/>
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                  />
                   <InputRightElement h={"full"}>
                     <Button
                       variant={"ghost"}
@@ -133,7 +150,7 @@ export default function SignUp({isLoggedIn}) {
                   _hover={{
                     bg: "blue.500",
                   }}
-                  onClick = {handleSubmit}
+                  onClick={handleSubmit}
                 >
                   Sign up
                 </Button>

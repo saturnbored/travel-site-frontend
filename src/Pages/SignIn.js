@@ -4,7 +4,6 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
   Stack,
   Link,
   Button,
@@ -18,38 +17,44 @@ import Navbar from "../Components/NavBar";
 
 import { useNavigate } from "react-router-dom";
 
-export default function SignIn({isLoggedIn, setFetchAgain, fetchAgain}) {
+export default function SignIn({ isLoggedIn, setFetchAgain, fetchAgain }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-  
-  useEffect(() => {
-    if(isLoggedIn?.status){
-      navigate('/home');
-    }
-  })
 
+  useEffect(() => {
+    if (isLoggedIn?.status) {
+      navigate("/");
+    }
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch("https://travel-site-saturnbored.onrender.com/signin", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
+      let res = await fetch(
+        "https://travel-site-saturnbored.onrender.com/signin",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      );
       res = await res.json();
-      console.log(res);
+      if (!res.token) {
+        setEmail("");
+        setPassword("");
+        return;
+      }
       localStorage.setItem("session", JSON.stringify(res));
       setFetchAgain(!fetchAgain);
-      navigate('/home');
+      navigate("/");
     } catch (err) {
       console.log(err.message);
     }
@@ -57,7 +62,11 @@ export default function SignIn({isLoggedIn, setFetchAgain, fetchAgain}) {
 
   return (
     <Box>
-      <Navbar isLoggedIn={isLoggedIn} setFetchAgain = {setFetchAgain} fetchAgain={fetchAgain} />
+      <Navbar
+        isLoggedIn={isLoggedIn}
+        setFetchAgain={setFetchAgain}
+        fetchAgain={fetchAgain}
+      />
       <Flex
         minH={"100vh"}
         align={"center"}
@@ -101,7 +110,6 @@ export default function SignIn({isLoggedIn, setFetchAgain, fetchAgain}) {
                   align={"start"}
                   justify={"space-between"}
                 >
-                  {/* <Checkbox>Remember me</Checkbox> */}
                   <Link color={"blue.400"}>Forgot password?</Link>
                 </Stack>
                 <Button

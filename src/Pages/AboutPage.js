@@ -1,5 +1,4 @@
 import Navbar from "../Components/NavBar";
-import Banner from "../Components/Banner";
 import Footer from "../Components/Footer";
 import Team from "../Components/Team";
 import Reviews from "../Components/Reviews";

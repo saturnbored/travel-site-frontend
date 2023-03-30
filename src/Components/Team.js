@@ -11,14 +11,6 @@ import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const images = [oval, oval1, oval2, oval3, oval4];
 
-const Avatar = ({ id }) => {
-  return (
-    <Button>
-      <Image src={images[id]}></Image>
-    </Button>
-  );
-};
-
 const Team = () => {
   return (
     <>
@@ -90,7 +82,6 @@ const Team = () => {
               display="flex"
               justifyContent={"center"}
               width={{ lg: "30%", md: "100%", sm: "100%", base: "100%" }}
-              // height = {{sm: "10%"}}
             >
               <Image
                 src={founder}

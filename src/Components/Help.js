@@ -7,19 +7,18 @@ const Help = () => {
   return (
     <>
       <Box
-      display = "flex"
-      flexDir={"column"}
-      justifyContent = "center"
-      flexWrap={"wrap"}
-      alignContent = "center"
-      maxWidth={{lg: "30vw", md: "30vw", sm: "100%", base: "100%"}}
-      gap = "1vw"
+        display="flex"
+        flexDir={"column"}
+        justifyContent="center"
+        flexWrap={"wrap"}
+        alignContent="center"
+        maxWidth={{ lg: "30vw", md: "30vw", sm: "100%", base: "100%" }}
+        gap="1vw"
       >
-        <Text maxWidth={"100%"}
-        fontSize = "20px"
-        fontWeight={"semibold"}
-        >Need Help?</Text>
-        <Divider borderColor = "black" width = "50%"/>
+        <Text maxWidth={"100%"} fontSize="20px" fontWeight={"semibold"}>
+          Need Help?
+        </Text>
+        <Divider borderColor="black" width="50%" />
         <Box
           display="flex"
           justifyContent={"flex-start"}
@@ -30,7 +29,7 @@ const Help = () => {
           maxWidth={"100%"}
         >
           <MdPermPhoneMsg color="blue.400" />
-          <Text mt = "-3px" >91-8474846846</Text>
+          <Text mt="-3px">91-8474846846</Text>
         </Box>
         <Box
           display="flex"
@@ -42,7 +41,7 @@ const Help = () => {
           maxWidth={"100%"}
         >
           <IoMdMail color="blue.400" />
-          <Text mt = "-3px" >sara.cruz@example.com</Text>
+          <Text mt="-3px">sara.cruz@example.com</Text>
         </Box>
       </Box>
     </>

@@ -1,5 +1,5 @@
 import { Box, Card, CardBody, Image, Text } from "@chakra-ui/react";
-import { Show, Hide } from "@chakra-ui/react";
+import { Hide } from "@chakra-ui/react";
 import { useState } from "react";
 
 import exp1 from "../Images/exp1.png";
@@ -28,8 +28,11 @@ const Reviews = () => {
               valuable experiences for your valuable time.
             </Text>
           </Box>
-          <Box display="flex" flexDir={"row"} justifyContent="center"
-          pr = {{base: "20px"}}
+          <Box
+            display="flex"
+            flexDir={"row"}
+            justifyContent="center"
+            pr={{ base: "20px" }}
           >
             <Card pt="9%">
               <CardBody maxWidth={"fit-content"} mr={"-40px"}>
@@ -62,7 +65,7 @@ const Reviews = () => {
             mt={{ lg: "-105px", md: "-105px", sm: "-50px" }}
             pr={{ lg: "100px", md: "100px", sm: "5px", base: "5px" }}
             mb="200px"
-            mr = {{base: "25px"}}
+            mr={{ base: "25px" }}
           >
             <Card
               width={{
@@ -71,22 +74,20 @@ const Reviews = () => {
                 sm: "80%",
                 base: "80%",
               }}
-              p = {{sm: "10px", base: "10px"}}
+              p={{ sm: "10px", base: "10px" }}
               shadow={"dark-lg"}
             >
-              <CardBody
-              p = {{base: "5px"}}
-              >
+              <CardBody p={{ base: "5px" }}>
                 <Box
                   display="flex"
                   justifyContent={"center"}
                   gap="15px"
-                  maxH={{base: "fit-content"}}
+                  maxH={{ base: "fit-content" }}
                   flexWrap={"wrap"}
                   alignContent="center"
-                  p = {{base: "0px"}}
+                  p={{ base: "0px" }}
                 >
-                  <Image src={oval}  h = {{base: "100px"}} />
+                  <Image src={oval} h={{ base: "100px" }} />
                   <Text pt="20px" display="flex" flexWrap="wrap">
                     "Great place to spend your vacation while exploring
                     different experiences."
